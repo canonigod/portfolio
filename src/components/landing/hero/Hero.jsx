@@ -54,7 +54,7 @@ export default function Hero() {
   const positionTitle = lang === 'en' ? 'DEVELOPER' : 'FRONT-END';
 
   return (
-    <div css={parentStyle}>
+    <div id="home" css={parentStyle}>
         <div css={subParentStyle}>
             <div className="top">
                 <p>🤭 {topMessage}</p>

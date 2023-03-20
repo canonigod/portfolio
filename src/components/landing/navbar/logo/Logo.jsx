@@ -23,6 +23,6 @@ const parentStyle = css`
 
 export default function Logo() {
   return (
-    <div css={parentStyle}><a href="/portfolio"><img src={LogoImg} alt="logo" /></a></div>
+    <div css={parentStyle}><a href="#home"><img src={LogoImg} alt="logo" /></a></div>
   )
 }

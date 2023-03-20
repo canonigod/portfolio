@@ -21,18 +21,18 @@ const parentStyle = css`
   width: 60%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
-  @media screen and (max-width: 767px){
-    width: 100%;
+  @media screen and (max-width: 2000px){
+    width: 70%;
+    top: -30%;
   }
   
   @media screen and (max-width: 1024px){
     width: 98%;
   }
-  
-  @media screen and (max-width: 2000px){
-    width: 70%;
-    top: -30%;
-  }
+
+  @media screen and (max-width: 767px){
+    width: 100%;
+  } 
 `;
 
 const wrapperStyles = css`

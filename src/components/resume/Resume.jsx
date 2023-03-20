@@ -8,7 +8,6 @@ import { ThemeContext } from '../../App';
 import { SkillTabs } from './SkillTabs';
 
 const parentStyle = css`
-    min-height: 100vh;
     position: relative;
     max-width: 1200px;
     margin-right: auto;
@@ -17,7 +16,11 @@ const parentStyle = css`
     padding: 146px 0 15px;
 
     @media screen and (max-width: 767px){
-        padding: 50px 15px;
+        padding: 30px;
+    }
+
+    @media screen and (min-width: 1200px){
+        min-height: 900px;
     }
 `;
 
