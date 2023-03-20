@@ -25,7 +25,7 @@ export const ThemeContext = React.createContext();
 export default function App() {
     const [lang, setLang] = useState('en');
     // const [isLoading, setIsLoading] = useState(false);
-    const [isGreeting, setIsGreeting] = useState(false);
+    const [isGreeting, setIsGreeting] = useState(true);
     // const color = "#235650" ;
 
     // useEffect(() => {
