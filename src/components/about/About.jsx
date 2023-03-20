@@ -65,7 +65,7 @@ const rightBox = css`
 
     @media screen and (max-width: 1024px){
         width: 100%;
-        padding: 30px 10px;
+        padding: 31px 10px;
         margin-top: 30px;
     }
 `;
