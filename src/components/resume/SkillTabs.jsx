@@ -71,44 +71,44 @@ export const SkillTabs = () => {
     const skills = ['React', 'Vue', 'Javascript/jQuery/JSON', 'REST/RESTFUL API', 'PHP', 'Laravel', 'SQL/MySQL', 'Git/Github/Sourcetree/Bitbucket', 'Peer Review', 'HTML', 'CSS', 'Typescript', 'SASS/SCSS/CSS/CSS3', 'Boostrap', 'Wordpress', 'Adobe Photoshop', 'E-commerce', 'AGILE/SCRUM'];
     const education = [
         {
-            college: 'St. Petersburg College',
-            degree: 'A.S - Web Development',
+            college: lang === 'en' ? 'St. Petersburg College' : lang === 'es' ? 'Universidad de San Petersburg' : 'Universidade de São Petersburgo',
+            degree:  `${lang === 'en' ? 'A.S - Web Development' : lang === 'es' ? 'Curso Técnico Superior en Desarolla de la Web' : 'Curso Técnico de Desenvolvimento da Web'}`,
             year: '2022'
         },
         {
             college: 'FLAG',
-            degree: 'Front-end Development Bootcamp',
+            degree: lang === 'en' ? 'Front-end Development Bootcamp' : lang === 'es' ? 'Bootcamp de Desarollo Front-end' : 'Bootcamp de Programação Front-end',
             year: '2018'
         },
         {
-            college: 'Portuguese, English, Spanish',
-            degree: 'Fluent',
+            college: lang === 'en' ? 'English, Spanish, Portuguese' : lang === 'es' ? 'Inglés, Español, Portugués' : 'Inglês, Espanhol, Português',
+            degree: lang === 'en' ? 'Fluent' : lang === 'es' ? 'Fluido' : 'Fluente',
             year: null
         },
     ];
     const experience = [
         {
-            title: 'Software Developer',
+            title: lang === 'en' ? 'Software Developer' : lang === 'es' ? 'Desarollador de Software' : 'Programador de Software',
             company: 'Bonterra',
-            year: '2022 - Current'
+            year: lang === 'en' ? '2022 — current' : '2022 — actual'
         },
         {
-            title: 'Software Developer',
+            title: lang === 'en' ? 'Full-stack Developer' : lang === 'es' ? 'Desarollador Full-stack' : 'Programador Full-stack',
             company: 'Stridek Inc.',
             year: '2021 - 2022'
         },
         {
-            title: 'Front-End Developer',
+            title: lang === 'en' ? 'Front-end Developer Intern' : lang === 'es' ? 'Prácticas Desarollador Front-end' : 'Programador Front-end Estágio',
             company: 'EverCommerce',
             year: '2020 - 2021'
         },
         {
-            title: 'Front-End Developer',
+            title: lang === 'en' ? 'Front-end Developer Intern' : lang === 'es' ? 'Prácticas Desarollador Front-end' : 'Programador Front-end Estágio',
             company: 'C.E. Hutton',
             year: '2019 - 2020'
         },
         {
-            title: 'Front-End Developer Intern',
+            title: lang === 'en' ? 'Front-end Developer Intern' : lang === 'es' ? 'Prácticas Desarollador Front-end' : 'Programador Front-end Estágio',
             company: 'Enyosolutions',
             year: '2019'
         },

@@ -27,7 +27,7 @@ const subParentStyle = css`
 
 const h1Style = css`
   font-size: 80px;
-  letter-spacing: 20px;
+  letter-spacing: 10px;
   color: var(--darkGreen);
 
   @media screen and (max-width: 1024px) {

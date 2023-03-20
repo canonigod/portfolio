@@ -18,7 +18,7 @@ const parentStyle = css`
   border-radius: 10px;
   background: white;
   min-height: 350px;
-  width: 50%;
+  width: 60%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
   @media screen and (max-width: 767px){
@@ -27,6 +27,11 @@ const parentStyle = css`
   
   @media screen and (max-width: 1024px){
     width: 98%;
+  }
+  
+  @media screen and (max-width: 2000px){
+    width: 70%;
+    top: -30%;
   }
 `;
 
