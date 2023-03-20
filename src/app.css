@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* #001d23 — dark green */
+/* #235650 — light green */
+
+:root {
+    --darkGreen: #001d23;
+    --lightGreen: #235650;
+  }
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body { 
+    font-family: 'Outfit', sans-serif;
+    color: var(--lightGreen);
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+img{
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: var(--darkGreen);
+    text-decoration: none;
+}
