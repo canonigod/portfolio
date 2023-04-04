@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/react';
 
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Navbar } from './components/version2/navbar/Navbar';
 import { Hero } from './components/version2/hero/Hero';
@@ -29,7 +29,6 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem('langPref', JSON.stringify(lang));
         localStorage.setItem('currentPage', JSON.stringify(currentPage));
-        // eslint-disable-next-line 
       }, [lang]);
 
       const getData = () => {
@@ -60,21 +59,21 @@ export default function App() {
     }, [width]);
 
     return (
-    <HashRouter>
-        <>
-            {
-            <ThemeContext.Provider value={[lang, translation]}>
-                <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
+        <Router>
+            <>
+                {
+                <ThemeContext.Provider value={[lang, translation]}>
+                    <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
                     <Routes>
                         <Route exact path="/portfolio" element={<Hero screenSize={screenSize} />} />
-                        <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
-                        <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
-                        <Route exact path="*" element={<Hero screenSize={screenSize} />} />
+                        <Route exact path="/" element={<Hero screenSize={screenSize} />} />
+                        <Route exact path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
+                        <Route exact path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
                     </Routes>
-                <Footer screenSize={screenSize} />
-            </ThemeContext.Provider>
-            }
-        </>
-    </HashRouter>
+                    <Footer screenSize={screenSize} />
+                </ThemeContext.Provider>
+                }
+            </>
+        </Router>
     )
 }
