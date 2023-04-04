@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/react';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Navbar } from './components/version2/navbar/Navbar';
 import { Hero } from './components/version2/hero/Hero';
