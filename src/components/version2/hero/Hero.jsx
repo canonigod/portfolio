@@ -76,7 +76,7 @@ export const Hero = ({ screenSize }) => {
         <div css={copyStyles}>
             <div>
                 <small css={small}>{translatedCopy.intro}</small>
-                <h1 css={h1}>David Canonigo22</h1>
+                <h1 css={h1}>David Canonigo</h1>
                 <h2 css={h2}><span>{'> ' + translatedCopy.job_title}</span></h2>
             </div>
             <div css={bottomWrapper}>

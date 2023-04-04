@@ -75,12 +75,11 @@ const btn = css`
     }
 `;
 
-export const Navbar = ({ screenSize, setLang, currentPage, setCurrentPage }) => {
+export const Navbar = ({ activeIndex, setActiveIndex, screenSize, setLang, currentPage, setCurrentPage }) => {
     const translation = useContext(ThemeContext);
     const lang = translation[0];
     const translatedCopy = translation[1];
 
-    const [activeIndex, setActiveIndex] = useState(0);
     const [scrolled, setScrolled] = useState(0);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -143,22 +142,39 @@ export const Navbar = ({ screenSize, setLang, currentPage, setCurrentPage }) => 
         setIsMobileMenuOpen(false);
     }
 
+    // useEffect(() => {
+    //     let page = window.location.pathname;
+    //     let pathAbout = `/portfolio/${lang === 'en' ? 'about-me' : lang === 'es' ? 'sobre-mi' : 'sobre-mim'}`;
+    //     let pathProj = `/portfolio/${lang === 'en' ? 'projects' : lang === 'es' ? 'proyectos' : 'projetos'}`;
+
+    //     if(hasLanguageChanged){
+    //         if(currentPage === '/portfolio'){
+    //             window.location.href = '/portfolio';
+    //         } else if (currentPage === `/portfolio/about-me` || currentPage === `/portfolio/sobre-mi` ){
+    //            window.location.href = pathAbout;
+    //         } else {
+    //             window.location.href = pathProj;
+    //         }
+    //     }
+        
+    //     setCurrentPage(page);
+    //     setHasLanguageChanged(false);
+    // }, [hasLanguageChanged])
+
     useEffect(() => {
         let page = window.location.pathname;
-        let pathAbout = `/portfolio/${lang === 'en' ? 'about-me' : lang === 'es' ? 'sobre-mi' : 'sobre-mim'}`;
-        let pathProj = `/portfolio/${lang === 'en' ? 'projects' : lang === 'es' ? 'proyectos' : 'projetos'}`;
 
         if(hasLanguageChanged){
-            if(currentPage === '/portfolio'){
-                window.location.href = '/portfolio';
-            } else if (currentPage === `/portfolio/about-me` || currentPage === `/portfolio/sobre-mi` ){
-               window.location.href = pathAbout;
+            if(page === '/portfolio'){
+                setActiveIndex(0);
+            } else if (page === `/portfolio/about-me` || page === `/portfolio/sobre-mi` || page === `/portfolio/sobre-mim` ){
+                setActiveIndex(1);
             } else {
-                window.location.href = pathProj;
+                setActiveIndex(2);
             }
         }
         
-        setCurrentPage(page);
+        // setCurrentPage(page);
         setHasLanguageChanged(false);
     }, [hasLanguageChanged])
 

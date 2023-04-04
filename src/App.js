@@ -25,6 +25,7 @@ export default function App() {
     const [translation, setTranslation] = useState({});
     const [width, setWidth] = useState(window.innerWidth);
     const [screenSize, setScreenSize] = useState('');
+    const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         localStorage.setItem('langPref', JSON.stringify(lang));
@@ -63,13 +64,27 @@ export default function App() {
             <>
                 {
                 <ThemeContext.Provider value={[lang, translation]}>
-                    <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
-                    <Routes>
+                    <Navbar 
+                        activeIndex={activeIndex} 
+                        setActiveIndex={setActiveIndex} 
+                        screenSize={screenSize} 
+                        // currentPage={currentPage} 
+                        // setCurrentPage={setCurrentPage} 
+                        setLang={setLang} 
+                    />
+                    {/* <Routes>
                         <Route path="/portfolio" element={<Hero screenSize={screenSize} />} />
                         <Route path="/" element={<Hero screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
-                    </Routes>
+                    </Routes> */}
+                    {
+                        activeIndex === 0 ?
+                            <Hero screenSize={screenSize} />
+                        : activeIndex ===1 ? 
+                            <About screenSize={screenSize} />
+                        : <Projects screenSize={screenSize} />
+                    }
                     <Footer screenSize={screenSize} />
                 </ThemeContext.Provider>
                 }
