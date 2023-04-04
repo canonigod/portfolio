@@ -29,6 +29,7 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem('langPref', JSON.stringify(lang));
         localStorage.setItem('currentPage', JSON.stringify(currentPage));
+        // eslint-disable-next-line 
       }, [lang]);
 
       const getData = () => {
@@ -59,16 +60,16 @@ export default function App() {
     }, [width]);
 
     return (
-    <HashRouter basename="/">
+    <HashRouter>
         <>
             {
             <ThemeContext.Provider value={[lang, translation]}>
                 <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
                     <Routes>
                         <Route exact path="/portfolio" element={<Hero screenSize={screenSize} />} />
-                        <Route exact path="*" element={<Projects screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
+                        <Route exact path="*" element={<Hero screenSize={screenSize} />} />
                     </Routes>
                 <Footer screenSize={screenSize} />
             </ThemeContext.Provider>
