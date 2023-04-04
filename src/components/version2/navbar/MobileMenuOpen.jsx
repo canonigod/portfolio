@@ -23,6 +23,10 @@ const menuPagesMobile = css`
     padding: 10px 30px;
     border: ${border};
     color: var(--gray);
+
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 const activeTabMobile = css`
@@ -42,9 +46,20 @@ export const MobileMenuOpen = ({
         <Logo isMobileMenuOpen={isMobileMenuOpen} handleCloseMobileMenu={handleCloseMobileMenu} />
         {pages.map((page, i) => {
             return (
-                <a 
+                // <a 
+                //     key={i} 
+                //     href={i === 0 ? '/portfolio' : page} 
+                //     css={[menuPagesMobile, activeIndex === i ? activeTabMobile : null]} 
+                //     style={{color: activeIndex === i ? '#fff' : null}}
+                //     onClick={() => {
+                //         handleCloseMobileMenu();
+                //         setActiveIndex(i);
+                //     }}
+                // >
+                //     _{page}
+                // </a>
+                <p 
                     key={i} 
-                    href={i === 0 ? '/portfolio' : page} 
                     css={[menuPagesMobile, activeIndex === i ? activeTabMobile : null]} 
                     style={{color: activeIndex === i ? '#fff' : null}}
                     onClick={() => {
@@ -53,7 +68,7 @@ export const MobileMenuOpen = ({
                     }}
                 >
                     _{page}
-                </a>
+                </p>
             )
         })}
     </div>

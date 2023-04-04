@@ -163,17 +163,19 @@ export const Navbar = ({ activeIndex, setActiveIndex, screenSize, setLang, curre
     // }, [hasLanguageChanged])
 
     useEffect(() => {
-        let page = window.location.pathname;
+        // let page = window.location.pathname;
 
-        if(hasLanguageChanged){
-            if(page === '/portfolio'){
-                setActiveIndex(0);
-            } else if (page === `/portfolio/about-me` || page === `/portfolio/sobre-mi` || page === `/portfolio/sobre-mim` ){
-                setActiveIndex(1);
-            } else {
-                setActiveIndex(2);
-            }
-        }
+        // if(hasLanguageChanged){
+        //     if(page === '/portfolio'){
+        //         setActiveIndex(0);
+        //     } else if (page === `/portfolio/about-me` || page === `/portfolio/sobre-mi` || page === `/portfolio/sobre-mim` ){
+        //         setActiveIndex(1);
+        //     } else {
+        //         setActiveIndex(2);
+        //     }
+        // }
+
+        setActiveIndex(0);
         
         // setCurrentPage(page);
         setHasLanguageChanged(false);
