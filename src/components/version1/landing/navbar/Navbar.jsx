@@ -75,7 +75,7 @@ export default function Navbar({setLang}) {
   ]
   const defaultNavLinks = ['portfolio', 'about', 'resume', 'contact'];
   const languages = ['🇬🇧', '🇪🇸',  '🇵🇹'];
-  const [flagToShow, setFlagToShow] = useState('🇬🇧');
+  const [flagToShow, setFlagToShow] = useState(languages[0]);
   const [activeIndex, setActiveIndex] = useState('');
   const [btnVisible, setBtnVisible] = useState(false);
   const [scrolled, setScrolled] = useState(0);
@@ -89,6 +89,20 @@ export default function Navbar({setLang}) {
   useEffect(() => {
     setActiveIndex(lang);
   }, [lang, activeIndex]);
+
+  useEffect(() => {
+    const langPref = JSON.parse(localStorage.getItem('langPref'));
+    
+    if(langPref){
+      if(langPref === 'en'){
+          setFlagToShow('🇬🇧');
+        } else if(langPref === 'es'){
+          setFlagToShow('🇪🇸');
+        }else{
+          setFlagToShow('🇵🇹');
+      }
+    }
+  }, []);
 
   const onScroll = () => setScrolled(window.scrollY);
 

@@ -1,139 +1,79 @@
 import React, { useState, useEffect } from 'react';
+
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from '@emotion/react';
-// import HashLoader from "react-spinners/HashLoader";
-import { motion, AnimatePresence } from "framer-motion"
 
-import { Greetings } from './components/landing/Greetings';
-import Navbar from './components/landing/navbar/Navbar';
-import Hero from './components/landing/hero/Hero';
-import { Portfolio } from './components/resume/Portfolio';
-import { About } from './components/about/About';
-import {Resume} from './components/resume/Resume'
-import { Footer } from './components/footer/Footer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import { Navbar } from './components/version2/navbar/Navbar';
+import { Hero } from './components/version2/hero/Hero';
+import { About } from './components/version2/about/About';
+import { Projects } from './components/version2/projects/Projects';
+import { Footer } from './components/version2/footer/Footer';
 
 export const ThemeContext = React.createContext();
 
-// const parentStyle = css`
-//     height: 80vh;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-// `
-
 export default function App() {
-    const [lang, setLang] = useState('en');
-    // const [isLoading, setIsLoading] = useState(false);
-    const [isGreeting, setIsGreeting] = useState(true);
-    // const color = "#235650" ;
+    // eslint-disable-next-line
+    const [lang, setLang] = useState(() => {
+        return JSON.parse(localStorage.getItem('langPref')) || 'en'
+    });
+    const [currentPage, setCurrentPage] = useState(() => {
+        return JSON.parse(localStorage.getItem('currentPage')) || '/portfolio'
+    });
+    const [translation, setTranslation] = useState({});
+    const [width, setWidth] = useState(window.innerWidth);
+    const [screenSize, setScreenSize] = useState('');
 
-    // useEffect(() => {
-    //     setIsLoading(false);
-
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 3000);
-    // }, [])
-    
     useEffect(() => {
-        setTimeout(() => {
-            setIsGreeting(false);
-        }, 6000);
-    }, [])
-    
+        localStorage.setItem('langPref', JSON.stringify(lang));
+        localStorage.setItem('currentPage', JSON.stringify(currentPage));
+      }, [lang]);
+
+      const getData = () => {
+        fetch(`/portfolio/translations/${lang}.json`)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            setTranslation(data)
+        });
+      }
+      
+      useEffect(()=>{
+        getData();
+        // eslint-disable-next-line
+      },[lang])
+
+    const handleWindowSizeChange = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        setScreenSize(width <= 767 ? 'mobile' : width <= 768 || width <= 1024 ? 'tablet' : 'desktop')
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, [width]);
 
     return (
-        <>
-        {
-            // isLoading ? 
-            // <div css={parentStyle}>
-            //     <HashLoader
-            //         color={color}
-            //         loading={isLoading}
-            //         size={200}
-            //         aria-label="Loading Spinner"
-            //         data-testid="loader"
-            //     />
-            // </div>
-            //  :
-             isGreeting ?
-                <AnimatePresence>
-                    <motion.div
-                        initial="pageInitial"
-                        animate="pageAnimate"
-                        exit="pageExit"
-                        variants={{
-                            pageInitial: {
-                                opacity: 0
-                            },
-                            pageAnimate: {
-                                opacity: 1
-                            },
-                            pageExit: {
-                                backgroundColor: 'red',
-                                opacity: 0,
-                                transition: {
-                                    delay: 2
-                                }
-                            },
-                        }}
-                    >
-                        <Greetings />
-                    </motion.div>
-                </AnimatePresence>
-             :
-            <ThemeContext.Provider value={lang}>
-                <AnimatePresence>
-                    <motion.div
-                        initial="pageInitial"
-                        animate="pageAnimate"
-                        exit="pageExit"
-                        variants={{
-                            pageInitial: {
-                                opacity: 0
-                            },
-                            pageAnimate: {
-                                opacity: 1
-                            },
-                            pageExit: {
-                                backgroundColor: 'red',
-                                opacity: 0,
-                                transition: {
-                                    delay: 2
-                                }
-                            },
-                        }}
-                    >
-                        <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={{
-                                hidden: {
-                                    scale: .8,
-                                    opacity: 0
-                                },
-                                visible:{
-                                    scale: [1, 1.5, 1],
-                                    roate: [0, 10, -10, 0],
-                                    opacity: 1,
-                                    transition: {
-                                        delay: .4
-                                    }
-                                }
-                            }}
-                        >
-                        <Navbar setLang={setLang} />
-                        <Hero />
-                        <Portfolio />
-                        <About />
-                        <Resume />
-                        <Footer />
-                        </motion.div>
-                    </motion.div>
-                </AnimatePresence>
-            </ThemeContext.Provider>
-        }
-        </>
+        <Router>
+            <>
+                {
+                <ThemeContext.Provider value={[lang, translation]}>
+                    <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
+                    <Routes>
+                        <Route path="/portfolio" element={<Hero screenSize={screenSize} />} />
+                        <Route path="/" element={<Hero screenSize={screenSize} />} />
+                        <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
+                        <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
+                    </Routes>
+                    <Footer screenSize={screenSize} />
+                </ThemeContext.Provider>
+                }
+            </>
+        </Router>
     )
 }

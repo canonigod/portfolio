@@ -4,7 +4,7 @@ import { useContext } from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 
-import { ThemeContext } from '../../App';
+import { ThemeContext } from '../../../App';
 
 const parentStyle = css`
     min-height: 100vh;

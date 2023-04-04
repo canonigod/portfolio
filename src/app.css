@@ -1,11 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 /* #001d23 — dark green */
 /* #235650 — light green */
 
 :root {
-    --darkGreen: #001d23;
-    --lightGreen: #235650;
+    --primaryMain: #011627;
+    --primaryBlack: #01080E;
+    --primaryAccent: #011221;
+    --grayBtn: #1E2D3D;
+    --gray: #607B96;
+    --gray50: #607B9680;
+    --orange: #FEA55F;
+    --orangeAccent: #E99287;
+    --purple: #4D5BCE;
+    --green: #3C9D93;
+    --redCode: #d17277;
+    --blueCode: #6c9fd6;
+    --yellowCode: #dbbe82;
+    --reactColor: #61DBFB;
   }
 
 *, *::before, *::after{
@@ -19,8 +33,12 @@
 }
 
 body { 
-    font-family: 'Outfit', sans-serif;
-    color: var(--lightGreen);
+    /* font-family: 'Outfit', sans-serif; */
+    /* font-family: 'Source Code Pro', monospace; */
+    font-family: 'Fira Code', monospace;
+    color: #fff;
+    background-color: var(--primaryMain);
+    overflow: hidden;
 }
 
 body, html {
@@ -38,7 +56,7 @@ img, picture, svg, video {
 img{
     object-fit: cover;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 li {
