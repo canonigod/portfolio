@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/react';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { Navbar } from './components/version2/navbar/Navbar';
 import { Hero } from './components/version2/hero/Hero';
@@ -59,21 +59,21 @@ export default function App() {
     }, [width]);
 
     return (
+    <HashRouter basename="/">
         <>
             {
             <ThemeContext.Provider value={[lang, translation]}>
                 <Navbar screenSize={screenSize} currentPage={currentPage} setCurrentPage={setCurrentPage} setLang={setLang} />
-                <BrowserRouter basename="/portfolio">
                     <Routes>
                         <Route exact path="/portfolio" element={<Hero screenSize={screenSize} />} />
-                        <Route exact path="/" element={<Hero screenSize={screenSize} />} />
+                        <Route exact path="*" element={<Projects screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
                         <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
                     </Routes>
-                </BrowserRouter>
                 <Footer screenSize={screenSize} />
             </ThemeContext.Provider>
             }
         </>
+    </HashRouter>
     )
 }
