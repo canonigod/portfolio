@@ -71,6 +71,7 @@ const mainLangWrapper = css`
 
 const btn = css`
     &:hover{
+        cursor: pointer;
         color: #fff;
     }
 `;
@@ -188,14 +189,21 @@ export const Navbar = ({ activeIndex, setActiveIndex, screenSize, setLang, curre
                         {pages.map((page, i) => {
                             return (
                                 <div key={i} css={[menuPages, activeIndex === i ? activeTab : null]}>
-                                    <a 
+                                    {/* <a 
                                         href={i === 0 ? '/portfolio' : `/portfolio/${page}`} 
                                         onClick={() => setActiveIndex(i)} 
                                         css={[p, btn]} 
                                         style={{color: activeIndex === i ? '#fff' : null}}
                                     >
                                         _{page}
-                                    </a>
+                                    </a> */}
+                                    <p
+                                        onClick={() => setActiveIndex(i)} 
+                                        css={[p, btn]} 
+                                        style={{color: activeIndex === i ? '#fff' : null}}
+                                    >
+                                        _{page}
+                                    </p>
                                 </div>
                             )
                         })}
