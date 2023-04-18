@@ -73,7 +73,7 @@ export const Box = ({ skillsSelected, currentProjects, translation }) => {
                                     </div>
                                     <div css={boxStyle}>
                                         <p>{project.description}</p>
-                                        <Button>{project.btn}</Button>
+                                        <Button href={project.btnUrl} target="_blank">{project.btn}</Button>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ export const Box = ({ skillsSelected, currentProjects, translation }) => {
                             </div>
                             <div css={boxStyle}>
                                 <p>{project.description}</p>
-                                <Button>{project.btn}</Button>
+                                <Button href={project.btnUrl} target="_blank">{project.btn}</Button>
                             </div>
                         </div>
                     </div>

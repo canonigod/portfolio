@@ -102,7 +102,7 @@ export const Hero = ({ screenSize }) => {
                     rel="noreferrer"
                     >
                         <span css={constColor}>const </span> 
-                        <span css={varColor}>linkedinLink </span> 
+                        <span css={varColor}>linkedInLink </span> 
                         <span css={textWhite}>=</span>
                         <span css={linkColor}> "https://www.linkedin.com/in/david-canonigo"<span css={textWhite}>;</span></span>
                 </a>

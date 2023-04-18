@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from '@emotion/react';
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import { Navbar } from './components/version2/navbar/Navbar';
 import { Hero } from './components/version2/hero/Hero';
 import { About } from './components/version2/about/About';
@@ -19,9 +13,6 @@ export default function App() {
     const [lang, setLang] = useState(() => {
         return JSON.parse(localStorage.getItem('langPref')) || 'en'
     });
-    const [currentPage, setCurrentPage] = useState(() => {
-        return JSON.parse(localStorage.getItem('currentPage')) || '/portfolio'
-    });
     const [translation, setTranslation] = useState({});
     const [width, setWidth] = useState(window.innerWidth);
     const [screenSize, setScreenSize] = useState('');
@@ -29,7 +20,6 @@ export default function App() {
 
     useEffect(() => {
         localStorage.setItem('langPref', JSON.stringify(lang));
-        localStorage.setItem('currentPage', JSON.stringify(currentPage));
       }, [lang]);
 
       const getData = () => {
@@ -60,24 +50,15 @@ export default function App() {
     }, [width]);
 
     return (
-        <Router>
             <>
-                {
+            {
                 <ThemeContext.Provider value={[lang, translation]}>
                     <Navbar 
                         activeIndex={activeIndex} 
                         setActiveIndex={setActiveIndex} 
                         screenSize={screenSize} 
-                        // currentPage={currentPage} 
-                        // setCurrentPage={setCurrentPage} 
                         setLang={setLang} 
                     />
-                    {/* <Routes>
-                        <Route path="/portfolio" element={<Hero screenSize={screenSize} />} />
-                        <Route path="/" element={<Hero screenSize={screenSize} />} />
-                        <Route path={`/portfolio/${translation.about}`} element={<About screenSize={screenSize} />} />
-                        <Route path={`/portfolio/${translation.projects}`} element={<Projects screenSize={screenSize} />} />
-                    </Routes> */}
                     {
                         activeIndex === 0 ?
                             <Hero screenSize={screenSize} />
@@ -87,8 +68,7 @@ export default function App() {
                     }
                     <Footer screenSize={screenSize} />
                 </ThemeContext.Provider>
-                }
+            }
             </>
-        </Router>
     )
 }

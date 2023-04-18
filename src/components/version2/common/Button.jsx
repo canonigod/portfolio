@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /** @jsxRuntime classic */
@@ -19,14 +20,31 @@ const container = css`
     }
 `;
 
-export const Button = ({ children }) => {
+export const Button = ({ children, href, target }) => {
   return (
-    <button css={container}>
-        {children}
-    </button>
+    <React.Fragment>
+      {
+        href 
+        ?
+        <a 
+          css={container} 
+          href={href} 
+          target={target} 
+          rel="noreferrer"
+        >
+          {children}
+        </a>
+        :
+        <button css={container}>
+          {children}
+        </button>
+      }
+    </React.Fragment>
   )
 }
 
 Button.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    href: PropTypes.string,
+    target: PropTypes.string,
 }
